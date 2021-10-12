@@ -1,4 +1,4 @@
-export default armazem = { 
+export const armazem = { 
     nome: "Armazém"
 };
 // Definir tipos (classes) de objetos que a app gerirá ("type of objects")
@@ -9,7 +9,7 @@ class Item {
         this.nome = nome;
     }
     toString() {
-        return `${this.itemCompleto} (º ${this.#quantidade})`;
+        return `${this.itemCompleto}`;
     }
     get itemCompleto () {
         return `${this.codigo} ${this.nome}`;
@@ -23,17 +23,17 @@ class Espaço {
         this.andar = andar
     }
     toString() {
-        return `${this.corredor} ${this.secção}  ${this.andar}`;
+        return `corredor:${this.corredor} secção:${this.secção}  andar:${this.andar}`;
     }
 }
 
-function Localização(Item, Espaço, quantidade) {
+function Quantidade(Item, Espaço, quantidade) {
     this.Item = Item;
     this.Espaço = Espaço
     this.quantidade = quantidade
 } 
 
-Localização.prototype.imprimir = function() {
+Quantidade.prototype.imprimir = function() {
     return `O item ${this.Item} encontra no espaço ${this.Espaço} com ${this.quantidade} unidades`;
 }
 
@@ -49,13 +49,13 @@ const Espaço4 = new Espaço("2", "1","1");
 const Espaço5 = new Espaço("2", "1", "2"); 
 const Espaço6 = new Espaço("2", "2", "1"); 
 
-const Localização1 = new Localização(Mesa, Espaço1, 2); 
-const Localização2 = new Localização(Mesa, Espaço2, 2); 
-const Localização3 = new Localização(Cadeira, Espaço3, 8); 
-const Localização4 = new Localização(Mesa, Espaço4, 2); 
-const Localização5 = new Localização(Mesa, Espaço5, 1); 
-const Localização6 = new Localização(Candeeiro, Espaço6, 5); 
-const Localização7 = new Localização(Candeeiro2, Espaço6, 3); 
+const Localização1 = new Quantidade(Mesa, Espaço1, 2); 
+const Localização2 = new Quantidade(Mesa, Espaço2, 2); 
+const Localização3 = new Quantidade(Cadeira, Espaço3, 8); 
+const Localização4 = new Quantidade(Mesa, Espaço4, 2); 
+const Localização5 = new Quantidade(Mesa, Espaço5, 1); 
+const Localização6 = new Quantidade(Candeeiro, Espaço6, 5); 
+const Localização7 = new Quantidade(Candeeiro2, Espaço6, 3); 
 
 const Espaços = []  
 const Itens = new Map(); 
