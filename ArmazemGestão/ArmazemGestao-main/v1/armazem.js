@@ -1,5 +1,6 @@
-const nome = "Armazém"; // declara uma constante e atribui o valor "Armazém" (um 'string', uma cadeia de carateres)
-
+export default armazem = { 
+    nome: "Armazém"
+};
 // Definir tipos (classes) de objetos que a app gerirá ("type of objects")
 class Item {
     //Tipo de Item
@@ -20,7 +21,10 @@ class Espaço {
         this.corredor = corredor;
         this.secção = secção;
         this.andar = andar
-    } 
+    }
+    toString() {
+        return `${this.corredor} ${this.secção}  ${this.andar}`;
+    }
 }
 
 function Localização(Item, Espaço, quantidade) {
@@ -76,3 +80,9 @@ Localizações.add(Localização4);
 Localizações.add(Localização5);
 Localizações.add(Localização6);
 Localizações.add(Localização7);
+
+Object.defineProperties(armazem, { // Método estático para redefinir objetos existentes
+    Espaços: { value: Espaços, writable: false }, // Evitar a alteração deste campo (o que não impede a alteração dos campos do campo)
+    Itens: { value: Itens, writable: false },
+    Localizações: { value: Localizações, writable: false }
+});
