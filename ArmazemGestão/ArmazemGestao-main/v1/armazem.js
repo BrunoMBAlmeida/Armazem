@@ -2,7 +2,7 @@ const nome = "Armazém"; // declara uma constante e atribui o valor "Armazém" (
 
 // Definir tipos (classes) de objetos que a app gerirá ("type of objects")
 class Item {
-    //Itens, não um item especifico mas um conjunto de itens
+    //Tipo de Item
     constructor(codigo, nome){
         this.codigo = codigo;
         this.nome = nome;
@@ -23,13 +23,14 @@ class Espaço {
     } 
 }
 
-function Localização() {
-    var item = item;
-    var Espaço = Espaço
+function Localização(Item, Espaço, quantidade) {
+    this.Item = Item;
+    this.Espaço = Espaço
+    this.quantidade = quantidade
 } 
 
 Localização.prototype.imprimir = function() {
-    return `O item ${this.item} encontra no espaço ${this.Espaço}`;
+    return `O item ${this.Item} encontra no espaço ${this.Espaço} com ${this.quantidade} unidades`;
 }
 
 const Cadeira = new Item("A0001", "Cadeira preta"); 
@@ -44,10 +45,34 @@ const Espaço4 = new Espaço("2", "1","1");
 const Espaço5 = new Espaço("2", "1", "2"); 
 const Espaço6 = new Espaço("2", "2", "1"); 
 
-const Localização1 = new Localização(Mesa, Espaço1); 
-const Localização2 = new Localização(Mesa, Espaço2); 
-const Localização3 = new Localização(Cadeira, Espaço3); 
-const Localização4 = new Localização(Mesa, Espaço4); 
-const Localização5 = new Localização(Mesa, Espaço5); 
-const Localização6 = new Localização(Candeeiro, Espaço6); 
-const Localização7 = new Localização(Candeeiro2, Espaço6); 
+const Localização1 = new Localização(Mesa, Espaço1, 2); 
+const Localização2 = new Localização(Mesa, Espaço2, 2); 
+const Localização3 = new Localização(Cadeira, Espaço3, 8); 
+const Localização4 = new Localização(Mesa, Espaço4, 2); 
+const Localização5 = new Localização(Mesa, Espaço5, 1); 
+const Localização6 = new Localização(Candeeiro, Espaço6, 5); 
+const Localização7 = new Localização(Candeeiro2, Espaço6, 3); 
+
+const Espaços = []  
+const Itens = new Map(); 
+const Localizações = new Set(); 
+
+Espaços.push(Espaço1);
+Espaços.push(Espaço2);
+Espaços.push(Espaço3);
+Espaços.push(Espaço4);
+Espaços.push(Espaço5);
+Espaços.push(Espaço6);
+
+Itens.set(Cadeira.codigo, Cadeira);
+Itens.set(Mesa.codigo, Mesa);
+Itens.set(Candeeiro.codigo, Candeeiro);
+Itens.set(Candeeiro2.codigo, Candeeiro2);
+
+Localizações.add(Localização1);
+Localizações.add(Localização2);
+Localizações.add(Localização3);
+Localizações.add(Localização4);
+Localizações.add(Localização5);
+Localizações.add(Localização6);
+Localizações.add(Localização7);
